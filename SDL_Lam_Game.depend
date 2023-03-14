@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1678796145 source:c:\sdl_lam_game\commonfunction.cpp
+	"CommonFunction.h"
+
+1678797621 c:\sdl_lam_game\commonfunction.h
+	<windows.h>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_video.h>
+
+1678796222 source:c:\sdl_lam_game\baseobject.cpp
+	"BaseObject.h"
+
+1678796241 c:\sdl_lam_game\baseobject.h
+	"commonFunction.h"
+
+1678796249 source:c:\sdl_lam_game\main.cpp
+	"CommonFunction.h"
+	"BaseObject.h"
+

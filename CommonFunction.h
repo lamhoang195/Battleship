@@ -14,8 +14,8 @@ static SDL_Renderer* g_screen = NULL;
 static SDL_Event g_event;
 
 //Man hinh
-const int SCREEN_WIDTH = 1280;// chieu rong
-const int SCREEN_HEIGHT = 750;//chieu cao
+const int SCREEN_WIDTH = 1200;// chieu rong
+const int SCREEN_HEIGHT = 720;//chieu cao
 const int SCREEN_BPP = 32;//pixel
 
 const int COLOR_KEY_R =167;//mau
@@ -25,7 +25,6 @@ const int COLOR_KEY_B =180;
 const int RENDER_DRAW_COLOR = 0xff;
 
 #endif // COMMON_FUNCTION_H
-
 
 
 
