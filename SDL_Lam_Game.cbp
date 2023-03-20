@@ -31,6 +31,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="BaseObject.cpp" />
+		<Unit filename="BaseObject.h" />
+		<Unit filename="CommonFunction.cpp" />
+		<Unit filename="CommonFunction.h" />
+		<Unit filename="LaserObject.cpp" />
+		<Unit filename="LaserObject.h" />
+		<Unit filename="PlayerObject.cpp" />
+		<Unit filename="PlayerObject.h" />
+		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

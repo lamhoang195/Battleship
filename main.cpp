@@ -1,7 +1,9 @@
 #include "CommonFunction.h"
 #include "BaseObject.h"
+#include "PlayerObject.h"
 
 BaseObject g_background;
+PlayerObject g_playerobject;
 
 //khởi động thông số cho SDL
 bool initData()
@@ -48,16 +50,25 @@ bool initData()
 bool LoadBackground()
 {
 
-    bool ret = g_background.LoadImg("background.png", g_screen);
+    bool ret = g_background.LoadImg("Image/Background/background.png", g_screen);
     if(ret == false)
         return false;
+    return true;
+}
 
+bool LoadPlayer()
+{
+    bool ret = g_playerobject.LoadImg("Image/Player/playerShip1_blue.png", g_screen);
+    g_playerobject.SetRect(552.5,620);
+    if(ret == false)
+        return false;
     return true;
 }
 
 void Clean()
 {
     g_background.Free();
+    g_playerobject.Free();
 
     SDL_DestroyRenderer(g_screen);//giải phóng g_screen
     g_screen = NULL;
@@ -77,6 +88,17 @@ int main(int argc, char* argv[])
     if(LoadBackground() == false)
         return -1;
 
+    if(LoadPlayer() == false)
+        return -1;
+
+
+    bool ret = g_playerobject.LoadImg("Image/Player/playerShip1_red.png", g_screen);
+
+    if(!ret)
+    {
+        return 0;
+    }
+
     //chạy ảnh vô tận
     bool is_quit = false;
     while(!is_quit)
@@ -87,6 +109,7 @@ int main(int argc, char* argv[])
             {
                 is_quit = true;
             }
+            g_playerobject.HanderInputAction(g_event, g_screen);
         }
         //trước load ảnh sét lại màu cho màn hình
         SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR,RENDER_DRAW_COLOR);
@@ -94,6 +117,13 @@ int main(int argc, char* argv[])
         SDL_RenderClear(g_screen);//xóa màn hình đi
 
         g_background.Render(g_screen, NULL);
+
+        g_playerobject.HandleMove();
+
+        g_playerobject.HandleLaser(g_screen);
+
+        g_playerobject.Render(g_screen, NULL);
+
         //đưa ảnh vào màn hình
         SDL_RenderPresent(g_screen);
     }

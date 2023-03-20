@@ -1,21 +1,38 @@
 # depslib dependency file v1.0
-1678796145 source:c:\sdl_lam_game\commonfunction.cpp
+1678894752 source:c:\sdl_lam_game\commonfunction.cpp
 	"CommonFunction.h"
 
-1678797621 c:\sdl_lam_game\commonfunction.h
+1678986417 c:\sdl_lam_game\commonfunction.h
 	<windows.h>
 	<string>
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_video.h>
 
-1678796222 source:c:\sdl_lam_game\baseobject.cpp
+1678984128 source:c:\sdl_lam_game\baseobject.cpp
 	"BaseObject.h"
 
-1678796241 c:\sdl_lam_game\baseobject.h
+1678894752 c:\sdl_lam_game\baseobject.h
 	"commonFunction.h"
 
-1678796249 source:c:\sdl_lam_game\main.cpp
+1679324364 source:c:\sdl_lam_game\main.cpp
 	"CommonFunction.h"
 	"BaseObject.h"
+	"PlayerObject.h"
+
+1679324463 source:c:\sdl_lam_game\playerobject.cpp
+	"PlayerObject.h"
+
+1679322022 c:\sdl_lam_game\playerobject.h
+	"CommonFunction.h"
+	"BaseObject.h"
+	"LaserObject.h"
+	<vector>
+
+1679231119 c:\sdl_lam_game\laserobject.h
+	"BaseObject.h"
+	"CommonFunction.h"
+
+1679323807 source:c:\sdl_lam_game\laserobject.cpp
+	"LaserObject.h"
 

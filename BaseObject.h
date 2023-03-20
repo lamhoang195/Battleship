@@ -24,7 +24,7 @@ public:
     SDL_Texture* GetObject() const{return p_object_;}//lấy ra k làm gì cả
 
     //load ảnh lên p_object sau đó sử dụng vào màn hình
-    bool LoadImg(std::string path, SDL_Renderer* screen);
+    virtual bool LoadImg(std::string path, SDL_Renderer* screen);
 
     void Render(SDL_Renderer* des, const SDL_Rect* clip = NULL);
     void Free();

@@ -14,6 +14,7 @@ static SDL_Renderer* g_screen = NULL;
 static SDL_Event g_event;
 
 //Man hinh
+
 const int SCREEN_WIDTH = 1200;// chieu rong
 const int SCREEN_HEIGHT = 720;//chieu cao
 const int SCREEN_BPP = 32;//pixel
@@ -23,6 +24,15 @@ const int COLOR_KEY_G =175;
 const int COLOR_KEY_B =180;
 
 const int RENDER_DRAW_COLOR = 0xff;
+
+//trạng thái di chuyển nhân vật
+typedef struct Input
+{
+    int left_;//trái
+    int right_;//phải
+    int up_;//lên trên
+    int down_;//xuống dưới
+};
 
 #endif // COMMON_FUNCTION_H
 
