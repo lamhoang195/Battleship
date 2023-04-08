@@ -6,7 +6,7 @@ bool SDL_Common::player_bullet_overlap_enemy(const SDL_Rect& playerlaser, const 
         return true;
     }
     if (playerlaser.y - threats.y >= 0 && playerlaser.y - threats.y < 60 && ((playerlaser.x - threats.x >= 0 && playerlaser.x - threats.x <= 36)
-                                                                       || (playerlaser.x - threats.x >= 80 && playerlaser.x - threats.x<=103)))
+                                                                       || (playerlaser.x - threats.x >= 80 && playerlaser.x - threats.x <= 103)))
     {
         return true;
     }

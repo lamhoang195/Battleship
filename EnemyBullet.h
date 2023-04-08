@@ -3,7 +3,6 @@
 
 #include "BaseObject.h"
 
-
 #define ENEMY_BULLET_WIDTH 16 ;
 #define ENEMY_BULLET_HEIGHT 15 ;
 

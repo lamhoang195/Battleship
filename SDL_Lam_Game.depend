@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1680942816 source:c:\sdl_lam_game\commonfunction.cpp
+1680947236 source:c:\sdl_lam_game\commonfunction.cpp
 	"CommonFunction.h"
 
 1680942549 c:\sdl_lam_game\commonfunction.h
@@ -37,11 +37,12 @@
 	"BaseObject.h"
 	"CommonFunction.h"
 
-<<<<<<< HEAD
+1680872063 D
+
 1680800067 source:c:\sdl_lam_game\laserobject.cpp
-=======
-1679324595 source:c:\sdl_lam_game\laserobject.cpp
->>>>>>> 4d0301d4a505ab33ccf8465d738e61d3f8323340
+	"LaserObject.h"
+
+1679324595 301d4a505ab33ccf8465d738e61d3f8323340
 	"LaserObject.h"
 
 1679411863 source:c:\sdl_lam_game\imptimer.cpp
@@ -62,6 +63,6 @@
 1680800042 source:c:\sdl_lam_game\enemybullet.cpp
 	"EnemyBullet.h"
 
-1680873096 c:\sdl_lam_game\enemybullet.h
+1680947236 c:\sdl_lam_game\enemybullet.h
 	"BaseObject.h"
 
