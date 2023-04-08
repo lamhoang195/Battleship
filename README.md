@@ -12,8 +12,8 @@ Một trò chơi đơn giản được viết bằng C++ sử dụng SDL2 làm t
 Tải và cài đặt thư viện SDL: https://www.libsdl.org/ (1)
 Tải và cài đặt thu viện SDL image, SDL mixer và SDL font: https://www.libsdl.org/projects/SDL_image/release/ (2)
 Với thư viện SDL (1), sau khi tải về: Giải nén vào một thư mục nào đó, trong đó có 2 thư mục, chỉ dùng đến 01:
-○ i686-w64-mingw32 dành cho CodeBlock 32 bit. 
-○ x86_64-w64-mingw32 dành cho CodeBlock 64 bit hoặc có compiler 64 bit.
+`○ i686-w64-mingw32 dành cho CodeBlock 32 bit. 
+○ x86_64-w64-mingw32 dành cho CodeBlock 64 bit hoặc có compiler 64 bit.`
 Các bước cài SDL:
 Copy file dll ...\x86_64-w64-mingw32\bin\SDL2.dll vào thư mục mã nguồn project (nơi có các file .cpp).
 Setting | Compiler | Linker Setting: chép vào Other Linker Option: -lmingw32 -lSDL2main -lSDL2
