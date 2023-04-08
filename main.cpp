@@ -1,11 +1,12 @@
 #include "CommonFunction.h"
 #include "BaseObject.h"
 #include "PlayerObject.h"
+#include "ImpTimer.h"
+#include "ThreatsObject.h"
+#include <vector>
 
-BaseObject g_background;
-PlayerObject g_playerobject;
 
-//khởi động thông số cho SDL
+//khởi động thông số cửa sổ
 bool initData()
 {
     bool success = true;
@@ -14,12 +15,12 @@ bool initData()
         return false;
 
     //thiết lập tỉ lệ chất lượng
-    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
-    //Tao cua so
-    g_window = SDL_CreateWindow("Game Lam_Hoang",
-                                SDL_WINDOWPOS_UNDEFINED,
-                                SDL_WINDOWPOS_UNDEFINED,
+    //tạo cửa sổ window
+    g_window = SDL_CreateWindow("Game Battleship",
+                                SDL_WINDOWPOS_CENTERED,
+                                SDL_WINDOWPOS_CENTERED,
                                 SCREEN_WIDTH,
                                 SCREEN_HEIGHT,
                                 SDL_WINDOW_SHOWN
@@ -37,7 +38,7 @@ bool initData()
         }
         else
         {
-            SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR);//màu sắc render ra màn hinh
+            SDL_SetRenderDrawColor(g_screen, 255, 255, 255, 255);//màu sắc render ra màn hinh
 
             int imgFlags = IMG_INIT_PNG;
             if(!(IMG_Init(imgFlags) && imgFlags))
@@ -47,15 +48,16 @@ bool initData()
     return success;
 }
 
+BaseObject g_background;
 bool LoadBackground()
 {
-
-    bool ret = g_background.LoadImg("Image/Background/background.png", g_screen);
+    bool ret = g_background.LoadImg("Image/Background/background1.png", g_screen);
     if(ret == false)
         return false;
     return true;
 }
 
+PlayerObject g_playerobject;
 bool LoadPlayer()
 {
     bool ret = g_playerobject.LoadImg("Image/Player/playerShip1_blue.png", g_screen);
@@ -65,10 +67,26 @@ bool LoadPlayer()
     return true;
 }
 
+ThreatsObject g_threats;
+bool LoadThreats()
+{
+        bool ret = g_threats.LoadImg("Image/Player/Enemies/enemyBlack4.png", g_screen);
+        if(ret == false)
+            return false;
+        return true;
+        int rand_x = rand()%400;
+        if(rand_x > SCREEN_WIDTH)
+        {
+            rand_x = SCREEN_WIDTH*0.5;
+        }
+        g_threats.SetRect(rand_x,SCREEN_WIDTH);
+}
+
 void Clean()
 {
     g_background.Free();
     g_playerobject.Free();
+    g_threats.Free();
 
     SDL_DestroyRenderer(g_screen);//giải phóng g_screen
     g_screen = NULL;
@@ -82,6 +100,8 @@ void Clean()
 
 int main(int argc, char* argv[])
 {
+    ImpTimer fps_timer;
+
     if(initData() == false)
         return -1;
 
@@ -91,8 +111,10 @@ int main(int argc, char* argv[])
     if(LoadPlayer() == false)
         return -1;
 
+    if(LoadThreats() == false)
+        return -1;
 
-    bool ret = g_playerobject.LoadImg("Image/Player/playerShip1_red.png", g_screen);
+    bool ret = g_playerobject.LoadImg("Image/Player/shipLoser1.png", g_screen);
 
     if(!ret)
     {
@@ -101,8 +123,14 @@ int main(int argc, char* argv[])
 
     //chạy ảnh vô tận
     bool is_quit = false;
+
+    g_threats.set_y_val(1);
+
+    g_threats.GenerateBullet(g_screen);
+
     while(!is_quit)
     {
+        fps_timer.start();
         while(SDL_PollEvent(&g_event) !=0)
         {
             if(g_event.type == SDL_QUIT)
@@ -112,7 +140,7 @@ int main(int argc, char* argv[])
             g_playerobject.HanderInputAction(g_event, g_screen);
         }
         //trước load ảnh sét lại màu cho màn hình
-        SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR,RENDER_DRAW_COLOR);
+        SDL_SetRenderDrawColor(g_screen, 255, 255, 255, 255);
 
         SDL_RenderClear(g_screen);//xóa màn hình đi
 
@@ -120,14 +148,57 @@ int main(int argc, char* argv[])
 
         g_playerobject.HandleMove();
 
+        g_playerobject.Render(g_screen, NULL);
+
         g_playerobject.HandleLaser(g_screen);
 
-        g_playerobject.Render(g_screen, NULL);
+        g_threats.HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+        g_threats.Render(g_screen, NULL);
+
+        g_threats.MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+        bool is_col = SDL_Common::two_objects_overlap(g_playerobject.GetRect(), g_threats.GetRect());
+        if(is_col)
+        {
+            if(MessageBox(NULL, "Game Over!", "Box", MB_OK) == IDOK)
+            {
+                Clean();
+                SDL_Quit();
+                return 1;
+            }
+        }
+
+        std::vector <LaserObject*> lase_list = g_playerobject.get_laser_list();
+        for(int i = 0; i < lase_list.size(); i++)
+        {
+            LaserObject* p_laser = lase_list.at(i);
+            if(p_laser != NULL)
+            {
+                bool ret_col = SDL_Common::player_bullet_overlap_enemy(p_laser->GetRect(), g_threats.GetRect());
+                if(ret_col)
+                {
+                    g_playerobject.RemoveLaser(i);
+                    g_threats.ResetThreats(SCREEN_WIDTH);
+                }
+            }
+        }
 
         //đưa ảnh vào màn hình
         SDL_RenderPresent(g_screen);
-    }
 
+        int real_imp_time = fps_timer.get_ticks();
+        int time_one_frame = 1000/FRAME_PER_SECOND;
+
+        if(real_imp_time < time_one_frame)
+        {
+            int delay_time = time_one_frame - real_imp_time;
+            if(delay_time >= 0)
+            {
+                SDL_Delay(delay_time);
+            }
+        }
+    }
     Clean();
     return 0;
 }

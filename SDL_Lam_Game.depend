@@ -1,38 +1,63 @@
 # depslib dependency file v1.0
-1678894752 source:c:\sdl_lam_game\commonfunction.cpp
+1680942816 source:c:\sdl_lam_game\commonfunction.cpp
 	"CommonFunction.h"
 
-1678986417 c:\sdl_lam_game\commonfunction.h
+1680942549 c:\sdl_lam_game\commonfunction.h
 	<windows.h>
 	<string>
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_video.h>
 
-1678984128 source:c:\sdl_lam_game\baseobject.cpp
+1680800070 source:c:\sdl_lam_game\baseobject.cpp
 	"BaseObject.h"
 
-1678894752 c:\sdl_lam_game\baseobject.h
+1680873096 c:\sdl_lam_game\baseobject.h
 	"commonFunction.h"
 
-1679324364 source:c:\sdl_lam_game\main.cpp
+1680945802 source:c:\sdl_lam_game\main.cpp
 	"CommonFunction.h"
 	"BaseObject.h"
 	"PlayerObject.h"
+	"ImpTimer.h"
+	"ThreatsObject.h"
+	<vector>
 
-1679324463 source:c:\sdl_lam_game\playerobject.cpp
+1680944472 source:c:\sdl_lam_game\playerobject.cpp
 	"PlayerObject.h"
+	"ImpTimer.h"
 
-1679322022 c:\sdl_lam_game\playerobject.h
+1680943758 c:\sdl_lam_game\playerobject.h
 	"CommonFunction.h"
 	"BaseObject.h"
 	"LaserObject.h"
 	<vector>
 
-1679231119 c:\sdl_lam_game\laserobject.h
+1680872063 c:\sdl_lam_game\laserobject.h
 	"BaseObject.h"
 	"CommonFunction.h"
 
-1679323807 source:c:\sdl_lam_game\laserobject.cpp
+1680800067 source:c:\sdl_lam_game\laserobject.cpp
 	"LaserObject.h"
+
+1679411863 source:c:\sdl_lam_game\imptimer.cpp
+	"ImpTimer.h"
+	"CommonFunction.h"
+
+1679411838 c:\sdl_lam_game\imptimer.h
+
+1680945634 source:c:\sdl_lam_game\threatsobject.cpp
+	"ThreatsObject.h"
+
+1680945446 c:\sdl_lam_game\threatsobject.h
+	"CommonFunction.h"
+	"BaseObject.h"
+	"EnemyBullet.h"
+	<vector>
+
+1680800042 source:c:\sdl_lam_game\enemybullet.cpp
+	"EnemyBullet.h"
+
+1680873096 c:\sdl_lam_game\enemybullet.h
+	"BaseObject.h"
 

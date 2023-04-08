@@ -15,7 +15,7 @@ LaserObject::~LaserObject()
 void LaserObject::HandleMove(const int &x_border, const int &y_border)
 {
     rect_.y -= 7;
-    if (rect_.y < y_border - rect_.h ){
+    if (rect_.y < y_border - rect_.h){
         is_move_ = false;
     }
 }

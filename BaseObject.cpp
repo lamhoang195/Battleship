@@ -21,7 +21,6 @@ bool BaseObject::LoadImg(std::string path, SDL_Renderer* screen)
     SDL_Surface* load_surface = IMG_Load(path.c_str());//đọc ảnh
     if(load_surface != NULL)
     {
-        SDL_SetColorKey(load_surface, SDL_TRUE, SDL_MapRGB(load_surface->format, COLOR_KEY_R, COLOR_KEY_G, COLOR_KEY_B));
         new_texture = SDL_CreateTextureFromSurface(screen, load_surface);
         if(new_texture != NULL)
         {
@@ -38,7 +37,7 @@ bool BaseObject::LoadImg(std::string path, SDL_Renderer* screen)
     return p_object_ != NULL;
 }
 
-void BaseObject::Render(SDL_Renderer* des, const SDL_Rect* clip)
+void BaseObject::Render(SDL_Renderer* des, const SDL_Rect* clip)//thong so anh
 {
     SDL_Rect renderquad = {rect_.x, rect_.y, rect_.w, rect_.h};
 
@@ -52,7 +51,7 @@ void BaseObject::Free()
     {
         SDL_DestroyTexture(p_object_);// hủy p_object_
         p_object_ = NULL;
-        rect_.w = 0;
+        rect_.w= 0;
         rect_.h = 0;
     }
 }

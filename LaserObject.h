@@ -6,6 +6,12 @@
 #include "BaseObject.h"
 #include "CommonFunction.h"
 
+#define WIGTH_LASERRED14_OBJECT 13
+#define HEIGHT_LASERRED14_OBJECT 54
+
+#define WIGTH_LASERRED12_OBJECT 13
+#define HEIGHT_LASERRED12_OBJECT 54
+
 class LaserObject : public BaseObject
 {
 public:
@@ -29,9 +35,9 @@ public:
     void HandleMove(const int &x_border, const int &y_border);
 
 private:
-    int x_val_;
+    int x_val_;//lưu 1 lượng giá trị thay đổi
     int y_val_;
-    bool is_move_;
+    bool is_move_;//trạng thái trong cửa sổ là 1 ngoài cửa là 0 xóa đi
 };
 
 
