@@ -37,7 +37,11 @@
 	"BaseObject.h"
 	"CommonFunction.h"
 
+<<<<<<< HEAD
 1680800067 source:c:\sdl_lam_game\laserobject.cpp
+=======
+1679324595 source:c:\sdl_lam_game\laserobject.cpp
+>>>>>>> 4d0301d4a505ab33ccf8465d738e61d3f8323340
 	"LaserObject.h"
 
 1679411863 source:c:\sdl_lam_game\imptimer.cpp

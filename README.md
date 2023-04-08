@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ======================== BATTLESHIP ========================
 
 
@@ -24,3 +25,6 @@ Cài thư viện image, ttf, mix các bạn cũng làm tương tự cài SDL
 ### Cách chơi
 
 Sau khi cài thư viện SDL xong bạn chỉ cần tải dự án của tôi rồi nhấn đúp vào `SDL_Lam_Game.cbp` để chạy trò chơi. Nhấn `UP`, `DOWN`, `LEFT`, `RIGHT` (phím mũi tên) để duy triển và bạn nhấn chuột trái hoặc phải để bắn đạn. Bạn cần bắn máy bay địch và né đạn của địch nếu bạn bị va chạm thì bạn sẽ mất máu. Game sẽ có các vật phẩm bổ trợ cho bạn
+=======
+Battleship
+>>>>>>> 4d0301d4a505ab33ccf8465d738e61d3f8323340
