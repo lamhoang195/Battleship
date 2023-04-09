@@ -29,7 +29,7 @@ public:
 
     void HandleLaser(SDL_Renderer* des);//bắn đạn ra
 
-    void RemoveLaser(const int& idx);
+    void RemoveLaser(const int& idx);//xóa đạn khi trúng địch
 
 private:
     std::vector <LaserObject*> p_laser_list_;

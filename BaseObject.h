@@ -28,6 +28,8 @@ public:
 
     void Render(SDL_Renderer* des, const SDL_Rect* clip = NULL);//load ảnh lên nền
 
+    void UpdateBackground(SDL_Renderer *renderer , SDL_Texture* src, int x, int y, int w, int h);
+
     void Free();
 
 protected:

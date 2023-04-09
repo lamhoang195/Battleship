@@ -22,16 +22,15 @@ public:
     }
 
     void HandleMove(const int& x_border, const int& y_border);
-    void HandleInputAction(SDL_Event events);
 
     void set_x_val(const float& xVal) {x_val_ = xVal;}
     void set_y_val(const float& yVal) {y_val_ = yVal;}
     int get_x_val() const {return x_val_;}
     int get_y_val() const {return y_val_;}
 
-    void GenerateBullet(SDL_Renderer* ren);
+    void GenerateBullet(SDL_Renderer* ren);//khởi tạo đạn
 
-    void MakeBullet(SDL_Renderer* des, const int& x_limit, const int& y_limit);//ban dan ra
+    void MakeBullet(SDL_Renderer* des, const int& x_limit, const int& y_limit);//bắn đạn ra
 
     void set_bullet_list(std::vector <EnemyBullet*> bullet_list)
     {
@@ -40,9 +39,9 @@ public:
 
     std::vector <EnemyBullet*> get_bullet_list() const {return p_bullet_list_;}
 
-    void ResetThreats(const int& yborder);
+    void ResetThreats(const int& yborder);//chạy lại threat
 
-    void ResetBullet(EnemyBullet* p_bullet);
+    void ResetBullet(EnemyBullet* p_bullet);//chạy lại đạn ở vị trí vs threat
 
 private:
     int x_val_;

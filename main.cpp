@@ -70,6 +70,9 @@ bool LoadPlayer()
 ThreatsObject g_threats;
 bool LoadThreats()
 {
+    for(int i = 0; i < NUM_MAX_THREATS; i++)
+    {
+        g_threats.value = i;
         bool ret = g_threats.LoadImg("Image/Player/Enemies/enemyBlack4.png", g_screen);
         if(ret == false)
             return false;
@@ -79,7 +82,8 @@ bool LoadThreats()
         {
             rand_x = SCREEN_WIDTH*0.5;
         }
-        g_threats.SetRect(rand_x,SCREEN_WIDTH);
+        g_threats.SetRect(rand_x, SCREEN_HEIGHT + i*400);
+    }
 }
 
 void Clean()
@@ -98,10 +102,12 @@ void Clean()
     SDL_Quit();
 }
 
+
+
 int main(int argc, char* argv[])
 {
     ImpTimer fps_timer;
-
+    int bg_y = 0;
     if(initData() == false)
         return -1;
 
@@ -139,10 +145,14 @@ int main(int argc, char* argv[])
             }
             g_playerobject.HanderInputAction(g_event, g_screen);
         }
+        bg_y += 2;
+
         //trước load ảnh sét lại màu cho màn hình
         SDL_SetRenderDrawColor(g_screen, 255, 255, 255, 255);
 
         SDL_RenderClear(g_screen);//xóa màn hình đi
+
+        g_background.Render(g_screen, NULL);
 
         g_background.Render(g_screen, NULL);
 
@@ -152,13 +162,18 @@ int main(int argc, char* argv[])
 
         g_playerobject.HandleLaser(g_screen);
 
+        //for(int j = 0; j < NUM_MAX_THREATS; j++)
+        //{
+        //    g_threats.value = j;
         g_threats.HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
 
         g_threats.Render(g_screen, NULL);
 
         g_threats.MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
+        //}
 
-        bool is_col = SDL_Common::two_objects_overlap(g_playerobject.GetRect(), g_threats.GetRect());
+        //threat va chạm player
+        bool is_col = SDL_Common::check_overlap(g_playerobject.GetRect(), g_threats.GetRect());
         if(is_col)
         {
             if(MessageBox(NULL, "Game Over!", "Box", MB_OK) == IDOK)
@@ -169,13 +184,34 @@ int main(int argc, char* argv[])
             }
         }
 
-        std::vector <LaserObject*> lase_list = g_playerobject.get_laser_list();
-        for(int i = 0; i < lase_list.size(); i++)
+        //enemybullet va chạm với player
+        std::vector <EnemyBullet*> enemybullet_list = g_threats.get_bullet_list();
+        for(int i = 0; i < enemybullet_list.size(); i++)
         {
-            LaserObject* p_laser = lase_list.at(i);
+            EnemyBullet* p_enemybullet = enemybullet_list.at(i);
+            if(p_enemybullet != NULL)
+            {
+                bool ret_col = SDL_Common::check_overlap(p_enemybullet->GetRect(), g_playerobject.GetRect());
+                if(ret_col)
+                {
+                    if(MessageBox(NULL, "Game Over!", "Box", MB_OK) == IDOK)
+                    {
+                        Clean();
+                        SDL_Quit();
+                        return 1;
+                    }
+                }
+            }
+        }
+
+        //player laser va chạm threats
+        std::vector <LaserObject*> laser_list = g_playerobject.get_laser_list();
+        for(int i = 0; i < laser_list.size(); i++)
+        {
+            LaserObject* p_laser = laser_list.at(i);
             if(p_laser != NULL)
             {
-                bool ret_col = SDL_Common::player_bullet_overlap_enemy(p_laser->GetRect(), g_threats.GetRect());
+                bool ret_col = SDL_Common::check_overlap(p_laser->GetRect(), g_threats.GetRect());
                 if(ret_col)
                 {
                     g_playerobject.RemoveLaser(i);
@@ -184,8 +220,7 @@ int main(int argc, char* argv[])
             }
         }
 
-        //đưa ảnh vào màn hình
-        SDL_RenderPresent(g_screen);
+        SDL_RenderPresent(g_screen);//đưa ảnh vào màn hình
 
         int real_imp_time = fps_timer.get_ticks();
         int time_one_frame = 1000/FRAME_PER_SECOND;

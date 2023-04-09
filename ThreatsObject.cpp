@@ -78,12 +78,6 @@ void ThreatsObject::HandleMove(const int& x_border, const int& y_border)
     }
 }
 
-void ThreatsObject::HandleInputAction(SDL_Event events)
-{
-
-
-}
-
 void ThreatsObject::ResetThreats(const int& yborder)
 {
     rect_.y = yborder;

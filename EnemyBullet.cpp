@@ -11,36 +11,11 @@ void EnemyBullet::HandleBullet( const int &x_border, const int &y_border ) {
     switch(bullet_type_){
     case 0://đạn thẳng
     {
-        rect_.y += 5;
+        rect_.y += 2;
         if (rect_.y > y_border) {
             is_move_ = false;
         }
     }
         break;
-    /*
-    case 2://đạn chéo trái
-    {
-        rect_.y += 10;
-        rect_.x -= 10;
-        if (rect_.y > y_border ) {
-            is_move_ = false;
-        }
-    }
-        break;
-
-
-    case 1://đạn tréo phải
-    {
-        rect_.y += 10;
-        rect_.x += 10;
-        if (rect_.y > y_border ) {
-            is_move_ = false;
-        }
-    }
-        break;
-
-    default:
-        break;*/
-
     }
 }

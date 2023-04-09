@@ -51,7 +51,16 @@ void BaseObject::Free()
     {
         SDL_DestroyTexture(p_object_);// hủy p_object_
         p_object_ = NULL;
-        rect_.w= 0;
+        rect_.w = 0;
         rect_.h = 0;
     }
+}
+
+void BaseObject::UpdateBackground(SDL_Renderer* renderer , SDL_Texture* p_object_,const int x, const int y, const int w, const int h) {
+	SDL_Rect clip;
+	clip.x = x;
+	clip.y = y;
+	clip.h = h;
+	clip.w = w;
+	SDL_RenderCopy(renderer, p_object_, NULL, &clip);
 }

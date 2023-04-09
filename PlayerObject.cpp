@@ -24,9 +24,9 @@ void PlayerObject::HanderInputAction(SDL_Event events, SDL_Renderer *screen)
 	{
 		switch (events.key.keysym.sym)
 		{
-		case SDLK_UP:
-			if (y_val_ - HEIGHT_PLAYER_OBJECT/4 >= 10)
-				y_val_ = y_val_ - HEIGHT_PLAYER_OBJECT/4;
+		case SDLK_UP://lên
+			if (y_val_ - HEIGHT_PLAYER_OBJECT/4 >= 0)
+				y_val_ -= HEIGHT_PLAYER_OBJECT/4;
 			break;
 
 		case SDLK_DOWN:
@@ -35,13 +35,13 @@ void PlayerObject::HanderInputAction(SDL_Event events, SDL_Renderer *screen)
 				break;
 
 		case SDLK_RIGHT:
-			if (x_val_ + WIDTH_PLAYER_OBJECT/3 <= SCREEN_WIDTH - WIDTH_PLAYER_OBJECT)
-                x_val_ += WIDTH_PLAYER_OBJECT/3;
+			if (x_val_ + WIDTH_PLAYER_OBJECT/4 <= 900)
+                x_val_ += WIDTH_PLAYER_OBJECT/4;
 				break;
 
 		case SDLK_LEFT:
-			if (x_val_ + WIDTH_PLAYER_OBJECT/3 >= 50)
-				x_val_ -= WIDTH_PLAYER_OBJECT/3;
+			if (x_val_ + WIDTH_PLAYER_OBJECT/4 >= 40)
+				x_val_ -= WIDTH_PLAYER_OBJECT/4;
 				break;
 		}
 	}
@@ -81,7 +81,7 @@ void PlayerObject::HanderInputAction(SDL_Event events, SDL_Renderer *screen)
     }
 }
 
-void PlayerObject::HandleLaser(SDL_Renderer* des)
+void PlayerObject::HandleLaser(SDL_Renderer* des)//bắn đạn
 {
     for (int i=0; i < p_laser_list_.size(); i++ )
     {
@@ -105,7 +105,7 @@ void PlayerObject::HandleMove()
 	rect_.y = y_val_;
 }
 
-void PlayerObject::RemoveLaser(const int& idx)
+void PlayerObject::RemoveLaser(const int& idx)//khởi tạo lại đạn khi va chạm
 {
     if(p_laser_list_.size() > 0 && idx < p_laser_list_.size())
     {

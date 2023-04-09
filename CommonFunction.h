@@ -23,9 +23,7 @@ const int NUM_MAX_THREATS = 5;//số lượng máy bay
 
 namespace SDL_Common
 {
-    bool player_bullet_overlap_enemy(const SDL_Rect& playerlaser, const SDL_Rect& threats);
-	bool enemy_bullet_overlap_player_object(const SDL_Rect& enemybullet, const SDL_Rect& playerobject);
-	bool two_objects_overlap(const SDL_Rect& object1, const SDL_Rect& object2);
+	bool check_overlap(const SDL_Rect& object1, const SDL_Rect& object2);
 }
 
 #endif // COMMON_FUNCTION_H
