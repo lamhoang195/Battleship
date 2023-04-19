@@ -2,6 +2,7 @@
 
 BaseObject::BaseObject()
 {
+    full_object_= NULL;
     p_object_ = NULL;
     rect_.x = 0;
     rect_.y = 0;
@@ -56,11 +57,10 @@ void BaseObject::Free()
     }
 }
 
-void BaseObject::UpdateBackground(SDL_Renderer* renderer , SDL_Texture* p_object_,const int x, const int y, const int w, const int h) {
-	SDL_Rect clip;
-	clip.x = x;
-	clip.y = y;
-	clip.h = h;
-	clip.w = w;
-	SDL_RenderCopy(renderer, p_object_, NULL, &clip);
+void BaseObject::UpdateBackground(SDL_Renderer* renderer , SDL_Texture* p_object_, const int& x, const int& y)
+{
+    SDL_Rect renderquad1;
+	rect_.x = x;
+	rect_.y = y;
+	SDL_RenderCopy(renderer, p_object_, NULL, &renderquad1);
 }

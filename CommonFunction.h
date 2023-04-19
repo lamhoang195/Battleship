@@ -24,6 +24,8 @@ const int NUM_MAX_THREATS = 5;//số lượng máy bay
 namespace SDL_Common
 {
 	bool check_overlap(const SDL_Rect& object1, const SDL_Rect& object2);
+
+	void ApplySurface(SDL_Renderer *renderer, SDL_Texture *src, int x, int y, int w, int h);
 }
 
 #endif // COMMON_FUNCTION_H

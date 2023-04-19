@@ -1,8 +1,10 @@
+#include <bits/stdc++.h>
 #include "CommonFunction.h"
 #include "BaseObject.h"
 #include "PlayerObject.h"
 #include "ImpTimer.h"
 #include "ThreatsObject.h"
+#include "ExplosionObject.h"
 #include <vector>
 
 
@@ -48,10 +50,20 @@ bool initData()
     return success;
 }
 
+ExplosionObject exp_threats;
+bool LoadExp()
+{
+    bool tRet = exp_threats.LoadImg("Image/Player/explosion1.png", g_screen);
+    if(!tRet)
+        return false;
+    return true;
+    exp_threats.set_clip();
+}
+
 BaseObject g_background;
 bool LoadBackground()
 {
-    bool ret = g_background.LoadImg("Image/Background/background1.png", g_screen);
+    bool ret = g_background.LoadImg("Image/Background/background1", g_screen);
     if(ret == false)
         return false;
     return true;
@@ -60,8 +72,8 @@ bool LoadBackground()
 PlayerObject g_playerobject;
 bool LoadPlayer()
 {
-    bool ret = g_playerobject.LoadImg("Image/Player/playerShip1_blue.png", g_screen);
-    g_playerobject.SetRect(552.5,620);
+    bool ret = g_playerobject.LoadImg("Image/Player/shipLoser1", g_screen);
+    g_playerobject.SetRect(440, 600);
     if(ret == false)
         return false;
     return true;
@@ -73,7 +85,7 @@ bool LoadThreats()
     for(int i = 0; i < NUM_MAX_THREATS; i++)
     {
         g_threats.value = i;
-        bool ret = g_threats.LoadImg("Image/Player/Enemies/enemyBlack4.png", g_screen);
+        bool ret = g_threats.LoadImg("Image/Player/Enemies/enemyBlack4", g_screen);
         if(ret == false)
             return false;
         return true;
@@ -89,7 +101,6 @@ bool LoadThreats()
 void Clean()
 {
     g_background.Free();
-    g_playerobject.Free();
     g_threats.Free();
 
     SDL_DestroyRenderer(g_screen);//giải phóng g_screen
@@ -120,20 +131,16 @@ int main(int argc, char* argv[])
     if(LoadThreats() == false)
         return -1;
 
-    bool ret = g_playerobject.LoadImg("Image/Player/shipLoser1.png", g_screen);
-
-    if(!ret)
-    {
-        return 0;
-    }
-
-    //chạy ảnh vô tận
-    bool is_quit = false;
+    if(LoadExp() == false)
+        return -1;
 
     g_threats.set_y_val(1);
 
     g_threats.GenerateBullet(g_screen);
 
+
+    //chạy ảnh vô tận
+    bool is_quit = false;
     while(!is_quit)
     {
         fps_timer.start();
@@ -152,7 +159,8 @@ int main(int argc, char* argv[])
 
         SDL_RenderClear(g_screen);//xóa màn hình đi
 
-        g_background.Render(g_screen, NULL);
+        //BaseObject::UpdateBackground(g_screen, g_background, bg_y);
+        //BaseObject::UpdateBackground(g_screen, g_background, 0, bg_y + SCREEN_HEIGHT);
 
         g_background.Render(g_screen, NULL);
 
@@ -172,10 +180,24 @@ int main(int argc, char* argv[])
         g_threats.MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
         //}
 
+
+        int frame_exp_width = exp_threats.get_frame_width();
+        int frame_exp_height = exp_threats.get_frame_height();
         //threat va chạm player
         bool is_col = SDL_Common::check_overlap(g_playerobject.GetRect(), g_threats.GetRect());
         if(is_col)
         {
+            for(int ex = 0; ex < 5; ex++)
+                    {
+                        int x_pos = g_threats.GetRect().x + g_threats.GetRect().w*0.5 - 118*0.5;
+                        int y_pos = g_threats.GetRect().y + g_threats.GetRect().h*0.5 - 118*0.5;
+                        exp_threats.set_frame(ex);
+                        exp_threats.SetRect(x_pos, y_pos);
+                        exp_threats.Show(g_screen);
+                        cout << " Hi";
+                        SDL_RenderPresent(g_screen);
+                        SDL_Delay(100);
+                    }
             if(MessageBox(NULL, "Game Over!", "Box", MB_OK) == IDOK)
             {
                 Clean();
@@ -204,6 +226,7 @@ int main(int argc, char* argv[])
             }
         }
 
+
         //player laser va chạm threats
         std::vector <LaserObject*> laser_list = g_playerobject.get_laser_list();
         for(int i = 0; i < laser_list.size(); i++)
@@ -223,7 +246,7 @@ int main(int argc, char* argv[])
         SDL_RenderPresent(g_screen);//đưa ảnh vào màn hình
 
         int real_imp_time = fps_timer.get_ticks();
-        int time_one_frame = 1000/FRAME_PER_SECOND;
+        int time_one_frame = 1500/FRAME_PER_SECOND;
 
         if(real_imp_time < time_one_frame)
         {

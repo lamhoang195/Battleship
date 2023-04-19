@@ -3,7 +3,7 @@
 #ifndef BASE_OBJECT_H
 #define BASE_OBJECT_H
 
-#include "commonFunction.h"
+#include "CommonFunction.h"
 
 class BaseObject
 {
@@ -26,15 +26,19 @@ public:
     //load ảnh lên p_object sau đó sử dụng vào màn hình
     virtual bool LoadImg(std::string path, SDL_Renderer* screen);
 
+    void Show(SDL_Renderer *ren);
+
     void Render(SDL_Renderer* des, const SDL_Rect* clip = NULL);//load ảnh lên nền
 
-    void UpdateBackground(SDL_Renderer *renderer , SDL_Texture* src, int x, int y, int w, int h);
+    void UpdateBackground(SDL_Renderer *renderer, SDL_Texture* p_object_, const int& x, const int& y);
 
     void Free();
 
 protected:
     //biến chuyên sd lưu trữ các ảnh
     SDL_Texture* p_object_;
+
+    SDL_Texture* full_object_;
 
     //biến chuyên lưu kích thước tấm ảnh đó
     SDL_Rect rect_;

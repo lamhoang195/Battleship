@@ -13,4 +13,14 @@ bool SDL_Common::check_overlap(const SDL_Rect& object1, const SDL_Rect& object2)
     return true;
 };
 
+void SDL_Common::ApplySurface(SDL_Renderer *renderer , SDL_Texture *src, int x, int y, int w, int h)
+{
+	SDL_Rect offset;
+	offset.x = x;
+	offset.y = y;
+	offset.h = h;
+	offset.w = w;
+	SDL_RenderCopy(renderer, src , NULL, &offset);
+	SDL_RenderPresent(renderer);
+}
 

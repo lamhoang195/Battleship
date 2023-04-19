@@ -37,6 +37,8 @@
 		<Unit filename="CommonFunction.h" />
 		<Unit filename="EnemyBullet.cpp" />
 		<Unit filename="EnemyBullet.h" />
+		<Unit filename="ExplosionObject.cpp" />
+		<Unit filename="ExplosionObject.h" />
 		<Unit filename="ImpTimer.cpp" />
 		<Unit filename="ImpTimer.h" />
 		<Unit filename="LaserObject.cpp" />

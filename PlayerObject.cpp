@@ -51,7 +51,7 @@ void PlayerObject::HanderInputAction(SDL_Event events, SDL_Renderer *screen)
         {
         case SDL_BUTTON_LEFT:
             {
-            LaserObject* p_laserRed14= new LaserObject();
+            LaserObject* p_laserRed14 = new LaserObject();
 
             p_laserRed14->LoadImg("Image/Player/Lasers/laserBlue14.png", screen);
 
@@ -66,7 +66,7 @@ void PlayerObject::HanderInputAction(SDL_Event events, SDL_Renderer *screen)
 
         case SDL_BUTTON_RIGHT:
             {
-            LaserObject* p_laserRed12= new LaserObject();
+            LaserObject* p_laserRed12 = new LaserObject();
 
             p_laserRed12->LoadImg("Image/Player/Lasers/laserBlue12.png", screen);
 
@@ -85,7 +85,7 @@ void PlayerObject::HandleLaser(SDL_Renderer* des)//bắn đạn
 {
     for (int i=0; i < p_laser_list_.size(); i++ )
     {
-        if( p_laser_list_[i] -> get_is_move())
+        if( p_laser_list_[i] -> get_is_move())//nếu di chuyển
         {
             p_laser_list_[i]->Render(des);
             p_laser_list_[i]->HandleMove(0,0);
@@ -105,9 +105,9 @@ void PlayerObject::HandleMove()
 	rect_.y = y_val_;
 }
 
-void PlayerObject::RemoveLaser(const int& idx)//khởi tạo lại đạn khi va chạm
+void PlayerObject::RemoveLaser(const int& idx)//khởi tạo lại đạn khi va chạm ở viên đạn thứ bao nhiêu idx
 {
-    if(p_laser_list_.size() > 0 && idx < p_laser_list_.size())
+    if(p_laser_list_.size() > 0 && idx <= p_laser_list_.size())
     {
         for(int i = 0 ; i < p_laser_list_.size(); i++)
         {
