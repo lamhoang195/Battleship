@@ -63,7 +63,7 @@ bool LoadExp()
 BaseObject g_background;
 bool LoadBackground()
 {
-    bool ret = g_background.LoadImg("Image/Background/background1", g_screen);
+    bool ret = g_background.LoadImg("Image/Background/background1.png", g_screen);
     if(ret == false)
         return false;
     return true;
@@ -72,7 +72,7 @@ bool LoadBackground()
 PlayerObject g_playerobject;
 bool LoadPlayer()
 {
-    bool ret = g_playerobject.LoadImg("Image/Player/shipLoser1", g_screen);
+    bool ret = g_playerobject.LoadImg("Image/Player/shipLoser1.png", g_screen);
     g_playerobject.SetRect(440, 600);
     if(ret == false)
         return false;
@@ -85,7 +85,7 @@ bool LoadThreats()
     for(int i = 0; i < NUM_MAX_THREATS; i++)
     {
         g_threats.value = i;
-        bool ret = g_threats.LoadImg("Image/Player/Enemies/enemyBlack4", g_screen);
+        bool ret = g_threats.LoadImg("Image/Player/Enemies/enemyBlack4.png", g_screen);
         if(ret == false)
             return false;
         return true;

@@ -15,7 +15,7 @@
 1681829765 c:\sdl_lam_game\baseobject.h
 	"CommonFunction.h"
 
-1681878182 source:c:\sdl_lam_game\main.cpp
+1681880322 source:c:\sdl_lam_game\main.cpp
 	<bits/stdc++.h>
 	"CommonFunction.h"
 	"BaseObject.h"
@@ -68,8 +68,9 @@
 1680947236 c:\sdl_lam_game\enemybullet.h
 	"BaseObject.h"
 
-1681878067 source:c:\sdl_lam_game\explosionobject.cpp
+1681878842 source:c:\sdl_lam_game\explosionobject.cpp
 	"ExplosionObject.h"
+	<bits/stdc++.h>
 
 1681874333 c:\sdl_lam_game\explosionobject.h
 	"BaseObject.h"
