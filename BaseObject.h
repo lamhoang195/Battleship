@@ -26,11 +26,11 @@ public:
     //load ảnh lên p_object sau đó sử dụng vào màn hình
     virtual bool LoadImg(std::string path, SDL_Renderer* screen);
 
-    void Show(SDL_Renderer *ren);
-
     void Render(SDL_Renderer* des, const SDL_Rect* clip = NULL);//load ảnh lên nền
 
-    void UpdateBackground(SDL_Renderer *renderer, SDL_Texture* p_object_, const int& x, const int& y);
+    void UpdateBK(SDL_Renderer* des, const SDL_Rect* clip, int x, int y);
+
+    void ShowBackGround(SDL_Renderer* des, const SDL_Rect* clip = NULL);
 
     void Free();
 

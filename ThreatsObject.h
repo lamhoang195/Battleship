@@ -25,10 +25,10 @@ public:
 
     void set_x_val(const float& xVal) {x_val_ = xVal;}
     void set_y_val(const float& yVal) {y_val_ = yVal;}
-    int get_x_val() const {return x_val_;}
-    int get_y_val() const {return y_val_;}
+    float get_x_val() const {return x_val_;}
+    float get_y_val() const {return y_val_;}
 
-    void GenerateBullet(SDL_Renderer* ren);//khởi tạo đạn
+    void GenerateBullet(SDL_Renderer* ren, Mix_Chunk* bullet_sound);//khởi tạo đạn
 
     void MakeBullet(SDL_Renderer* des, const int& x_limit, const int& y_limit);//bắn đạn ra
 
@@ -43,9 +43,11 @@ public:
 
     void ResetBullet(EnemyBullet* p_bullet);//chạy lại đạn ở vị trí vs threat
 
+    void RemoveBullet(const int& idx);//chay lai dan threats
+
 private:
-    int x_val_;
-    int y_val_;
+    float x_val_;
+    float y_val_;
     bool is_move = 1;
     std::vector <EnemyBullet*> p_bullet_list_;
 };

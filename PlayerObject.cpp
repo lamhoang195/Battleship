@@ -18,7 +18,7 @@ PlayerObject::~PlayerObject()
     ;
 }
 
-void PlayerObject::HanderInputAction(SDL_Event events, SDL_Renderer *screen)
+void PlayerObject::HanderInputAction(SDL_Event events, SDL_Renderer *screen, Mix_Chunk* laser_sound)
 {
     if(events.type == SDL_KEYDOWN)
 	{
@@ -51,6 +51,8 @@ void PlayerObject::HanderInputAction(SDL_Event events, SDL_Renderer *screen)
         {
         case SDL_BUTTON_LEFT:
             {
+            Mix_PlayChannel(-1, laser_sound, 0);
+
             LaserObject* p_laserRed14 = new LaserObject();
 
             p_laserRed14->LoadImg("Image/Player/Lasers/laserBlue14.png", screen);
@@ -66,6 +68,8 @@ void PlayerObject::HanderInputAction(SDL_Event events, SDL_Renderer *screen)
 
         case SDL_BUTTON_RIGHT:
             {
+            Mix_PlayChannel(-1, laser_sound, 0);
+
             LaserObject* p_laserRed12 = new LaserObject();
 
             p_laserRed12->LoadImg("Image/Player/Lasers/laserBlue12.png", screen);

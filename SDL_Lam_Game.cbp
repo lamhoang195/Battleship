@@ -33,6 +33,10 @@
 		</Compiler>
 		<Unit filename="BaseObject.cpp" />
 		<Unit filename="BaseObject.h" />
+		<Unit filename="BossBullet.cpp" />
+		<Unit filename="BossBullet.h" />
+		<Unit filename="BossObject.cpp" />
+		<Unit filename="BossObject.h" />
 		<Unit filename="CommonFunction.cpp" />
 		<Unit filename="CommonFunction.h" />
 		<Unit filename="EnemyBullet.cpp" />
@@ -43,8 +47,14 @@
 		<Unit filename="ImpTimer.h" />
 		<Unit filename="LaserObject.cpp" />
 		<Unit filename="LaserObject.h" />
+		<Unit filename="MenuObject.cpp" />
+		<Unit filename="MenuObject.h" />
 		<Unit filename="PlayerObject.cpp" />
 		<Unit filename="PlayerObject.h" />
+		<Unit filename="PowerObject.cpp" />
+		<Unit filename="PowerObject.h" />
+		<Unit filename="TextObject.cpp" />
+		<Unit filename="TextObject.h" />
 		<Unit filename="ThreatsObject.cpp" />
 		<Unit filename="ThreatsObject.h" />
 		<Unit filename="main.cpp" />

@@ -17,7 +17,7 @@ public:
     PlayerObject();
     ~PlayerObject();
 
-    void HanderInputAction(SDL_Event events, SDL_Renderer* screen);//sự kiện
+    void HanderInputAction(SDL_Event events, SDL_Renderer* screen, Mix_Chunk* laser_sound);//sự kiện
 
     void HandleMove();
 
@@ -31,10 +31,13 @@ public:
 
     void RemoveLaser(const int& idx);//xóa đạn khi trúng địch
 
+    void set_come_back_time(const int&cb_time) {come_back_time_ = cb_time;}
+
 private:
     std::vector <LaserObject*> p_laser_list_;
     float x_val_;
     float y_val_;
+    int come_back_time_;
 };
 
 #endif // PLAYER_OBJECT_H

@@ -57,10 +57,4 @@ void BaseObject::Free()
     }
 }
 
-void BaseObject::UpdateBackground(SDL_Renderer* renderer , SDL_Texture* p_object_, const int& x, const int& y)
-{
-    SDL_Rect renderquad1;
-	rect_.x = x;
-	rect_.y = y;
-	SDL_RenderCopy(renderer, p_object_, NULL, &renderquad1);
-}
+
