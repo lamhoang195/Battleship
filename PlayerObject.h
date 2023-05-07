@@ -8,8 +8,8 @@
 #include "LaserObject.h"
 #include <vector>
 
-#define WIDTH_PLAYER_OBJECT 120
-#define HEIGHT_PLAYER_OBJECT 120
+#define WIDTH_PLAYER_OBJECT 70
+#define HEIGHT_PLAYER_OBJECT 70
 
 class PlayerObject : public BaseObject
 {
@@ -31,13 +31,28 @@ public:
 
     void RemoveLaser(const int& idx);//xóa đạn khi trúng địch
 
-    void set_come_back_time(const int&cb_time) {come_back_time_ = cb_time;}
+    void Reset();//chay lai khi thua
+
+    void got_hit()
+    {
+        if(life >= 0)
+        {
+            life--;
+        }
+    }
+
+    int get_life() const {return life;}
+    void set_flick (const bool is_flick) {flick = is_flick;}
+    bool get_flick() const {return flick;}
 
 private:
     std::vector <LaserObject*> p_laser_list_;
     float x_val_;
     float y_val_;
-    int come_back_time_;
+    bool canspawnbullet;
+    bool input_mouse;
+    int life;
+    bool flick;
 };
 
 #endif // PLAYER_OBJECT_H

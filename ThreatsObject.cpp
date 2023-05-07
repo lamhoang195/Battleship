@@ -31,20 +31,13 @@ ThreatsObject::~ThreatsObject()
 
 void ThreatsObject::GenerateBullet(SDL_Renderer* screen, Mix_Chunk* bullet_sound)
 {
-    Mix_PlayChannel(-1, bullet_sound, 0);
-
     EnemyBullet* p_enemy_bullet = new EnemyBullet();
 
-    p_enemy_bullet->LoadImg("Image/Player/Meteors/meteorGrey_tiny2.png", screen);
+    p_enemy_bullet->LoadImg("Image/Player/BulletThreat.png", screen);
 
     p_enemy_bullet->SetRect(this->rect_.x + 32, this->rect_.y + 80);
 
-    p_enemy_bullet->set_bullet_type(rand()%3);
-
-   // p_enemy_bullet->set_is_move(true);
-
     p_bullet_list_.push_back(p_enemy_bullet);
-
 }
 
 void ThreatsObject::MakeBullet(SDL_Renderer* des, const int& x_limit, const int& y_limit)

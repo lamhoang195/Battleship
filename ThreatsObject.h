@@ -4,6 +4,7 @@
 #include "CommonFunction.h"
 #include "BaseObject.h"
 #include "EnemyBullet.h"
+#include "PlayerObject.h"
 #include <vector>
 
 #define WIDTH_BLACKK4 82
@@ -27,6 +28,7 @@ public:
     void set_y_val(const float& yVal) {y_val_ = yVal;}
     float get_x_val() const {return x_val_;}
     float get_y_val() const {return y_val_;}
+    bool get_is_move() {return is_move_ ;};
 
     void GenerateBullet(SDL_Renderer* ren, Mix_Chunk* bullet_sound);//khởi tạo đạn
 
@@ -45,11 +47,18 @@ public:
 
     void RemoveBullet(const int& idx);//chay lai dan threats
 
+    void got_hit(const int damage) {health -= damage;}
+
+    void set_health(const int &life) {health = life;}
+
+    int get_health() const {return health;}
+
 private:
     float x_val_;
     float y_val_;
-    bool is_move = 1;
+    bool is_move_ = 1;
     std::vector <EnemyBullet*> p_bullet_list_;
+    int health;
 };
 
 #endif // THREATS_OBJECT_H

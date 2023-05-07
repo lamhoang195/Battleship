@@ -38,14 +38,6 @@ void PowerObject::InitP(SDL_Renderer* screen)
     add_pos(80);
 }
 
-void PowerObject::InitCrease()
-{
-    number_health_++;
-    int last_pos = pos_list_.back();
-    last_pos += 30;
-    pos_list_.push_back(last_pos);
-}
-
 void PowerObject::Decrease()
 {
     number_health_--;

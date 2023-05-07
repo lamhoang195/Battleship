@@ -13,7 +13,11 @@ bool SDL_Common::check_overlap(const SDL_Rect& object1, const SDL_Rect& object2)
     return true;
 };
 
-
+int RandomNumber(int min, int max)
+{
+    int randomNumber = rand() % (max - min + 1)+min ;
+    return randomNumber;
+}
 
 
 

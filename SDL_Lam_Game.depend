@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1682296730 source:c:\sdl_lam_game\commonfunction.cpp
+1683363900 source:c:\sdl_lam_game\commonfunction.cpp
 	"CommonFunction.h"
 
-1683103134 c:\sdl_lam_game\commonfunction.h
+1683363868 c:\sdl_lam_game\commonfunction.h
 	<windows.h>
 	<string>
 	<SDL.h>
@@ -11,13 +11,13 @@
 	<SDL_mixer.h>
 	<SDL_ttf.h>
 
-1682300222 source:c:\sdl_lam_game\baseobject.cpp
+1683442617 source:c:\sdl_lam_game\baseobject.cpp
 	"BaseObject.h"
 
-1682300165 c:\sdl_lam_game\baseobject.h
+1683442521 c:\sdl_lam_game\baseobject.h
 	"CommonFunction.h"
 
-1683099399 source:c:\sdl_lam_game\main.cpp
+1683458311 source:c:\sdl_lam_game\main.cpp
 	<bits/stdc++.h>
 	"CommonFunction.h"
 	"BaseObject.h"
@@ -32,17 +32,17 @@
 	<vector>
 	<ctime>
 
-1683097714 source:c:\sdl_lam_game\playerobject.cpp
+1683457469 source:c:\sdl_lam_game\playerobject.cpp
 	"PlayerObject.h"
 	"ImpTimer.h"
 
-1682087980 c:\sdl_lam_game\playerobject.h
+1683441999 c:\sdl_lam_game\playerobject.h
 	"CommonFunction.h"
 	"BaseObject.h"
 	"LaserObject.h"
 	<vector>
 
-1680872063 c:\sdl_lam_game\laserobject.h
+1683437980 c:\sdl_lam_game\laserobject.h
 	"BaseObject.h"
 	"CommonFunction.h"
 
@@ -60,20 +60,21 @@
 
 1679411838 c:\sdl_lam_game\imptimer.h
 
-1683099583 source:c:\sdl_lam_game\threatsobject.cpp
+1683438982 source:c:\sdl_lam_game\threatsobject.cpp
 	"ThreatsObject.h"
 	<ctime>
 
-1683097972 c:\sdl_lam_game\threatsobject.h
+1683367075 c:\sdl_lam_game\threatsobject.h
 	"CommonFunction.h"
 	"BaseObject.h"
 	"EnemyBullet.h"
+	"PlayerObject.h"
 	<vector>
 
-1683099008 source:c:\sdl_lam_game\enemybullet.cpp
+1683361559 source:c:\sdl_lam_game\enemybullet.cpp
 	"EnemyBullet.h"
 
-1680947236 c:\sdl_lam_game\enemybullet.h
+1683354201 c:\sdl_lam_game\enemybullet.h
 	"BaseObject.h"
 
 1682432262 source:c:\sdl_lam_game\explosionobject.cpp
@@ -88,7 +89,7 @@
 	"BaseObject.h"
 	<vector>
 
-1682054380 source:c:\sdl_lam_game\powerobject.cpp
+1683440777 source:c:\sdl_lam_game\powerobject.cpp
 	"PowerObject.h"
 
 1682242299 source:c:\sdl_lam_game\textobject.cpp
@@ -98,28 +99,49 @@
 	"CommonFunction.h"
 	"BaseObject.h"
 
-1682665147 source:c:\sdl_lam_game\bossbullet.cpp
+1683444527 source:c:\sdl_lam_game\bossbullet.cpp
 	"BossBullet.h"
 
-1682443962 c:\sdl_lam_game\bossbullet.h
+1683393536 c:\sdl_lam_game\bossbullet.h
 	"BaseObject.h"
+	"CommonFunction.h"
 	<vector>
+	<bits/stdc++.h>
 
-1682663113 source:c:\sdl_lam_game\bossobject.cpp
+1683447062 source:c:\sdl_lam_game\bossobject.cpp
 	"BossObject.h"
 
-1682662949 c:\sdl_lam_game\bossobject.h
+1683441372 c:\sdl_lam_game\bossobject.h
 	"CommonFunction.h"
 	"BaseObject.h"
 	"TextObject.h"
 	"BossBullet.h"
+	"PlayerObject.h"
 	<vector>
 
-1683033685 source:c:\sdl_lam_game\menuobject.cpp
+1683446631 source:c:\sdl_lam_game\menuobject.cpp
 	"MenuObject.h"
 
 1683033685 c:\sdl_lam_game\menuobject.h
 	"BaseObject.h"
 	"TextObject.h"
+	"CommonFunction.h"
+
+1683393038 source:c:\sdl_lam_game\bossrect.cpp
+	"BossRect.h"
+
+1683369886 c:\sdl_lam_game\bossrect.h
+	"BossObject.h"
+	"CommonFunction.h"
+	<vector>
+
+1683442861 source:c:\sdl_lam_game\collisionboss.cpp
+	"CollisionBoss.h"
+
+1683372938 c:\sdl_lam_game\collisionboss.h
+	"BossObject.h"
+	"PlayerObject.h"
+	"BossBullet.h"
+	"LaserObject.h"
 	"CommonFunction.h"
 

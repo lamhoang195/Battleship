@@ -5,12 +5,8 @@
 #include "BaseObject.h"
 #include "TextObject.h"
 #include "BossBullet.h"
+#include "PlayerObject.h"
 #include <vector>
-
-#define NUM_FRAME_BOSS 6
-#define WIDTH_BOSS 296
-#define HEIGHT_BOSS 361
-
 
 class BossObject : public BaseObject
 {
@@ -18,19 +14,34 @@ public:
     BossObject();
     ~BossObject();
 
-    //void set_clip_boss();
-    //int get_frame_width_boss() const {return frame_width_boss_;}
-    //int get_frame_height_boss() const {return frame_height_boss_;}
+    void set_x_pos(const double &xPos) {x_pos = xPos;}
+    void set_y_pos(const double &yPos) {y_pos = yPos;}
+    double get_x_pos() const {return x_pos;}
+    double get_y_pos() const {return y_pos;}
+    void set_y_limit(const double &yLimit) {y_limit = yLimit;}
+    void set_x_limit(const double &xLimit) {x_limit = xLimit;}
 
-    void set_x_val_boss(const float& xVal) {x_val_boss_= xVal;}
-    void set_y_val_boss(const float& yVal) {y_val_boss_ = yVal;}
-    int get_x_val_boss() const {return x_val_boss_;}
-    int get_y_val_boss() const {return y_val_boss_;}
+    bool canspawnbullet();
+    void GenerateBullet(SDL_Renderer* screen);
 
+    //movement
+    void set_x_speed(const float &xSpeed) {x_speed = xSpeed;}
+    void set_y_speed(const float &ySpeed) {y_speed = ySpeed;}
+    void MoveThreat();
+    void MoveDead();
 
-    void GenerateBulletBoss(SDL_Renderer* ren);//khởi tạo đạn boss
+    void rotate_angle();//dan quay tron
+    void set_angle_rotate_speed(const double& angleSpeed) {angle_rotate_speed = angleSpeed;}
+    void set_angle(const double& angle_) {angle = angle_;}
 
-    void MakeBulletBoss(SDL_Renderer* des, const int& x_limit, const int& y_limit);//bắn đạn ra boss
+    //texture
+    bool LoadImg(string path, SDL_Renderer* screen);
+    void Show(SDL_Renderer* des,const SDL_Rect* clip);
+
+    //action when die
+    void got_hit(const int damage) {health -= damage;}
+    void set_health(const int &life) {health = life;}
+    int get_health() const {return health;}
 
     void set_boss_bullet_list(std::vector <BossBullet*> boss_bullet_list)
     {
@@ -39,27 +50,32 @@ public:
 
     std::vector <BossBullet*> get_boss_bullet_list() const {return p_boss_bullet_list_;}
 
-    void ResetBoss(const int& yborder);//chạy lại threat
-
-    void ResetBulletBoss(BossBullet* p_boss_bullet);//chạy lại đạn ở vị trí vs threat
-
-    void RemoveBulletboss(const int& idx);//chay lai dan threats
-
-    void ShowBoss(SDL_Renderer* screen);
-
-    void HandleMove(const int& x_border, const int& y_border);
-
-    //virtual bool LoadImg(std::string path, SDL_Renderer* screen);
+    void set_stats(SDL_Renderer* screen);
+    void MakeBullet(SDL_Renderer* des, const int& x_limit, const int& y_limit);
 
 private:
-    //int frame_width_boss_;//kich thuoc 1 frame
-    //int frame_height_boss_;
-    //int frame_boss_;
-    //SDL_Rect clip_boss_[6];
+    double x_pos;
+    double y_pos;
+    double x_speed;
+    double y_speed;
 
-    int x_val_boss_;
-    int y_val_boss_;
-    bool is_move = 1;
+    double angle;
+    double angle_rotate_speed;
+
+    int width_frame;
+    int height_frame;
+
+    int y_limit;
+    int x_limit;
+    int health;
+
+    int delay_shoot_time;
+    int count;
+
+    bool reverse;
+    unsigned long long CurrentTime;
+    unsigned long long LastTime;
+
     std::vector <BossBullet*> p_boss_bullet_list_;
 };
 

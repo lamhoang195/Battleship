@@ -31,6 +31,9 @@ const int SCREEN_WIDTH = 1000;// chieu rong
 const int SCREEN_HEIGHT = 720;//chieu cao
 const int SCREEN_BPP = 32;//pixel
 const int NUM_MAX_THREATS = 5;//số lượng máy bay
+const double PI =3.141592653589793238462643383279;
+
+int RandomNumber(int min, int max);
 
 namespace SDL_Common
 {

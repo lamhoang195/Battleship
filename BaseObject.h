@@ -30,18 +30,24 @@ public:
 
     void UpdateBK(SDL_Renderer* des, const SDL_Rect* clip, int x, int y);
 
-    void ShowBackGround(SDL_Renderer* des, const SDL_Rect* clip = NULL);
+    void MoveBackGround(SDL_Renderer* des, const SDL_Rect* clip = NULL);
 
     void Free();
+
+    int get_width_frame() const {return width_frame;}
+    int get_height_frame() const {return height_frame;}
+    void flicking(Uint8 &alpha);
+    void setAlpha(Uint8 alpha);
 
 protected:
     //biến chuyên sd lưu trữ các ảnh
     SDL_Texture* p_object_;
 
-    SDL_Texture* full_object_;
-
     //biến chuyên lưu kích thước tấm ảnh đó
     SDL_Rect rect_;
+
+    int width_frame;
+    int height_frame;
 };
 
 #endif // BASE_OBJECT_H

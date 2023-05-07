@@ -20,28 +20,6 @@ void EnemyBullet::HandleBullet( const int &x_border, const int &y_border )
         }
     }
         break;
-
-    case 2: // this case bullet is diagonal left
-    {
-        rect_.y += 3;
-        rect_.x -= 3;
-        if (rect_.y > y_border ) {
-            is_move_ = false;
-        }
-    }
-        break;
-
-
-    case 1: // this case bullet is diagonal right
-    {
-         rect_.y += 3;
-        rect_.x += 3;
-        if (rect_.y > y_border ) {
-            is_move_ = false;
-        }
-    }
-        break;
-
     default:
         break;
     }

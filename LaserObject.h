@@ -6,11 +6,9 @@
 #include "BaseObject.h"
 #include "CommonFunction.h"
 
-#define WIGTH_LASERRED14_OBJECT 13
-#define HEIGHT_LASERRED14_OBJECT 54
+#define WIGTH_LASER_OBJECT 13
+#define HEIGHT_LASER_OBJECT 54
 
-#define WIGTH_LASERRED12_OBJECT 13
-#define HEIGHT_LASERRED12_OBJECT 54
 
 class LaserObject : public BaseObject
 {

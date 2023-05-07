@@ -3,8 +3,8 @@
 
 #include "BaseObject.h"
 
-#define ENEMY_BULLET_WIDTH 16 ;
-#define ENEMY_BULLET_HEIGHT 15 ;
+#define ENEMY_BULLET_WIDTH 19;
+#define ENEMY_BULLET_HEIGHT 19;
 
 class EnemyBullet : public BaseObject
 {

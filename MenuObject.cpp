@@ -2,20 +2,20 @@
 
 int MenuObject::ShowMenu(SDL_Renderer* screen,TTF_Font* font,BaseObject gBackground)
 {
-    bool x = gBackground.LoadImg("Image/Background/background1.png", screen);
+    bool x = gBackground.LoadImg("Image/Player/Menu.png", screen);
     gBackground.Render(screen, NULL);
 
     std::string s1 = "Enter To Play";
-    std::string s2 = "E To Exit";
+    std::string s2 = "Escape To Exit";
 
     const int menuItems = 2;
     SDL_Rect pos_arr[menuItems];
 
-    pos_arr[0].x=200;
-    pos_arr[0].y=200;
+    pos_arr[0].x = 100;
+    pos_arr[0].y = 460;
 
-    pos_arr[1].x=200;
-    pos_arr[1].y=260;
+    pos_arr[1].x = 100;
+    pos_arr[1].y = 540;
 
     TextObject text_menu[menuItems];
 
